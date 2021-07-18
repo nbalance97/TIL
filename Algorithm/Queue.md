@@ -9,9 +9,6 @@
 - appendleft(왼쪽 삽입), append(오른쪽 삽입)
 - popleft(왼쪽 뺌), pop(오른쪽 뺌) <br/>
 
-
-
-
 ## 관련 문제
 <hr>
 
