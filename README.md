@@ -1,6 +1,6 @@
 # Study Page
 # Django
-- [Generic View](https://github.com/nbalance97/TIL/blob/main/Django/Generic%10View.md)
+- [Generic View](https://github.com/nbalance97/TIL/blob/main/Django/Generic%20View.md)
 
 # Unix
 - [Unix Command](https://github.com/nbalance97/TIL/blob/main/Unix/Command.md)
