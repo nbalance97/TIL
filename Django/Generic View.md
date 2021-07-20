@@ -201,10 +201,7 @@ class PostDeleteView(DeleteView):
 3. UpdateView
     1. form : form_class에 명시한 폼 전달
 
-### 제네릭 뷰에 Context로 추가 인자 넘겨주어야 하는 경우
-### Django ListView Context 추가
-
----
+# 제네릭 뷰에 Context로 추가 인자 넘겨주어야 하는 경우
 
 - 전달해야하는 Context 변수가 더 있는 경우
 
