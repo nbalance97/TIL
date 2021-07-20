@@ -200,3 +200,22 @@ class PostDeleteView(DeleteView):
     3. is_paginated : 페이지네이션 적용 여부
 3. UpdateView
     1. form : form_class에 명시한 폼 전달
+
+### 제네릭 뷰에 Context로 추가 인자 넘겨주어야 하는 경우
+### Django ListView Context 추가
+
+---
+
+- 전달해야하는 Context 변수가 더 있는 경우
+
+```python
+class InterestCompanyListView(ListView):
+    model = InterestCompany
+    template_name = 'Interest/interestcompany_list.html'
+    context_object_name = 'objects'
+
+    def get_context_data(self, **kwargs):
+        context = super(InterestCompanyListView, self).get_context_data(**kwargs)
+        context['internship_infor'] = get_internship_information()
+        return context
+```
