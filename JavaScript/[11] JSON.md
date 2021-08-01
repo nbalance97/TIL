@@ -71,11 +71,11 @@ console.log(JSON.parse(test));
 
 ---
 
-- [https://learn.codeit.kr/api/members](https://learn.codeit.kr/api/members)
+- 사이트 비공개
 - 전체 직원(GET)
 
     ```jsx
-    fetch('https://learn.codeit.kr/api/members')
+    fetch('https://../api/members')
     	.then((response) => response.text())
     	.then((result) => { 
             console.log(result);
@@ -85,7 +85,7 @@ console.log(JSON.parse(test));
 - 특정 직원(GET)
 
     ```jsx
-    fetch('https://learn.codeit.kr/api/members/3')
+    fetch('https://../api/members/3')
     	.then((response) => response.text())
     	.then((result) => { 
             console.log(result);
@@ -104,7 +104,7 @@ console.log(JSON.parse(test));
     	department: 'engineering',
     }
 
-    fetch('https://learn.codeit.kr/api/members', {
+    fetch('https://../api/members', {
     	method: 'POST',
     	body: JSON.stringify(newMember),
     }).then((response) => response.text())
@@ -120,7 +120,7 @@ console.log(JSON.parse(test));
     	department: 'marketing',
     }
 
-    fetch('https://learn.codeit.kr/api/members/2', { // 2번 유저에대한 데이터 수정
+    fetch('https://../api/members/2', { // 2번 유저에대한 데이터 수정
     	method: 'PUT',
     	body: JSON.stringify(member),
     }).then((response) => response.text())
@@ -130,7 +130,7 @@ console.log(JSON.parse(test));
 - 직원 삭제(DELETE)
 
     ```jsx
-    fetch('https://learn.codeit.kr/api/members/2', { // 2번 유저에대한 데이터 삭제
+    fetch('https://../api/members/2', { // 2번 유저에대한 데이터 삭제
     	method: 'DELETE',
     }).then((response) => response.text())
     	.then((result) => { console.log(result) });
