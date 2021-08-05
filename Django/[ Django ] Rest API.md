@@ -144,3 +144,59 @@ function clickevent(self) {
     ```
 
     - [https://stackoverflow.com/questions/30871033/django-rest-framework-remove-csrf](https://stackoverflow.com/questions/30871033/django-rest-framework-remove-csrf)
+
+## CSRF Token 실어서 Ajax 사용
+## Django Ajax 사용시 인증 처리
+
+---
+
+- csrf_token을 실어서 보내주어야 한다.
+    - csrf_token은 로그인 할때마다 바뀐다.
+    1. getCookie 함수를 사용하여 csrftoken을 얻어온다.
+    2. ajax에서 beforesend 프로퍼티를 통해 X-CSRFToken 헤더를 추가해서 request를 전송
+
+        ⇒ 에러 없이 동작하는것을 볼 수 있다.
+
+reference : [https://docs.djangoproject.com/en/3.2/ref/csrf/](https://docs.djangoproject.com/en/3.2/ref/csrf/)
+
+```jsx
+const csrftoken = getCookie('csrftoken');
+
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+$.ajax({
+            type: "POST",
+            url: "{% url 'api-company-list' %}",
+            data: {
+                "user" : userId,
+                "company_name" : name,
+                "intern_title" : title,
+                "duration" : "1900-01-01T12:00"
+            },
+            dataType: "json",
+            beforeSend: function(request) {
+                request.setRequestHeader('X-CSRFToken', csrftoken);
+            },
+            success: function(response) {
+                window.location.reload()
+            },
+            error: function(request, status, error) {
+                console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+error);
+
+            }
+        });
+```
